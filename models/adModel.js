@@ -32,6 +32,10 @@ module.exports = (sequelize) => {
                 isEmail: true
             }
         },
+        approved: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
     }, {
         sequelize,
         modelName: 'Ad',
