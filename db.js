@@ -12,8 +12,9 @@ sequelize.authenticate().then(() => {
     console.log(err);
 });
 
-// Import Ad model
+// Import models
 const Ad = require('./models/adModel')(sequelize);
+const User = require('./models/userModel')(sequelize);
 
 Ad.sync({ alter: true }).then(() => {
     console.log("Ads table is up");
@@ -21,4 +22,12 @@ Ad.sync({ alter: true }).then(() => {
     console.log(`Failed to connect to Ads table. Error: ${error}`);
 });
 
-module.exports = { sequelize, Ad };
+// Initialize the app with sample users
+sequelize.sync({ force:true }).then(async () => {
+    await User.bulkCreate([
+        { login: 'admin', password: 'admin' },
+        { login: 'admin2', password: 'admin2' }
+    ]);
+}).catch(err => console.error("Error initializing user's table:", err));
+
+module.exports = { sequelize, Ad, User };
