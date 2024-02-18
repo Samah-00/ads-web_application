@@ -9,6 +9,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const adsRouter = require('./routes/ads');
 
+const { sequelize } = require('./db'); // Import sequelize from db.js
+
 const app = express();
 
 // view engine setup

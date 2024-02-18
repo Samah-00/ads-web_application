@@ -2,29 +2,9 @@
 const express = require('express');
 const { Sequelize } = require('sequelize');
 
+const { Ad } = require('../db'); // Import Ad model from db.js
+
 const router = express.Router();
-
-// connect to the database
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: 'path/to/database.sqlite'
-});
-
-sequelize.authenticate().then(()=>{
-    console.log('Connection to database has been established successfully.');
-})
-    .catch((err)=>{
-        console.log(err);
-    })
-
-// Import Ad model
-const Ad = require('../models/adModel')(sequelize);
-Ad.sync({ alter: true }).then(() => {
-    console.log("Ads table is up");
-}).catch((error) => {
-    console.log(`Failed to connect to Ads table. Error: ${error}`);
-});
-
 // ------- Ad routes -------
 
 // Get all ads
