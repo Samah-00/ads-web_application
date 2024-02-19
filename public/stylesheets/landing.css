@@ -1,0 +1,15 @@
+.card {
+    margin: 20px;
+}
+.card-title {
+    font-size: 1.5rem;
+}
+.card-description {
+    margin-top: 10px;
+}
+.card-footer {
+    background-color: #f8f9fa;
+}
+.icon {
+    margin-right: 5px;
+}

@@ -17,7 +17,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Logout (not much to do in this example since HTTP is stateless)
+// Logout
 router.post('/logout', (req, res) => {
   res.json({ message: 'Logout successful' });
 });
