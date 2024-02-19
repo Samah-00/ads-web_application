@@ -4,10 +4,19 @@ function fetchAndDisplayApprovedAds() {
         .then(response => response.json())
         .then(ads => {
             const adsContainer = document.getElementById('ads-container');
-            ads.forEach(ad => {
-                const adCard = createAdCard(ad); // Create a card for each ad
-                adsContainer.appendChild(adCard);
-            });
+            if (ads.length === 0) {
+                // Display a message if there are no ads
+                adsContainer.innerHTML = '' +
+                    '<div id="empty-ad-message-container">' +
+                    '<p>No ads available at the moment 💔</p>' +
+                    '</div>';
+            } else {
+                // Display ads if there are any
+                ads.forEach(ad => {
+                    const adCard = createAdCard(ad); // Create a card for each ad
+                    adsContainer.appendChild(adCard);
+                });
+            }
         })
         .catch(error => console.error('Error fetching ads:', error));
 }
@@ -35,10 +44,6 @@ function createAdCard(ad) {
             </ul>
         </div>
     `;
-
-    // Add styling for custom footer background color
-    const customFooter = card.querySelector('.custom-footer');
-    customFooter.style.backgroundColor = '#CBC3E3'; // Change to 'lightpurple' for light purple color
 
     return card;
 }

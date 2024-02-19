@@ -16,7 +16,7 @@ sequelize.authenticate().then(() => {
 const Ad = require('./models/adModel')(sequelize);
 const User = require('./models/userModel')(sequelize);
 
-Ad.sync({ force:true }).then(() => {
+Ad.sync({ alter: true }).then(() => {
     console.log("Ads table is up");
 }).catch((error) => {
     console.log(`Failed to connect to Ads table. Error: ${error}`);

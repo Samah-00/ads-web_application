@@ -7,10 +7,12 @@ const { Ad } = require('../db'); // Import Ad model from db.js
 const router = express.Router();
 // ------- Ad routes -------
 
-// Get all ads
+// Get all ads sorted by update time (newer ad first)
 router.get('/', async (req, res) => {
     try {
-        const ads = await Ad.findAll();
+        const ads = await Ad.findAll({
+            order: [['updatedAt', 'DESC']] // Sort by updatedAt timestamp in descending order
+        });
         res.json(ads);
     } catch (error) {
         console.error(error);
@@ -18,13 +20,14 @@ router.get('/', async (req, res) => {
     }
 });
 
-// Get approved ads
+// Get approved ads sorted by update time (newer ad first)
 router.get('/approved', async (req, res) => {
     try {
         const approvedAds = await Ad.findAll({
             where: {
                 approved: true
-            }
+            },
+            order: [['updatedAt', 'DESC']] // Sort by updatedAt timestamp in descending order
         });
         res.json(approvedAds);
     } catch (error) {
