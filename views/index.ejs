@@ -25,10 +25,10 @@
     <div class="col-md-3 custom-panel">
       <div class="row pt-md-3">
         <div class="col-6 col-md-12">
-          <a href="/admin" id="admin-area-link" class="custom-link"><i class="fas fa-user"></i> Admin Area</a>
+          <a href="/users" id="admin-area-link" class="custom-link"><i class="fas fa-user"></i> Admin Area</a>
         </div>
         <div class="col-6 col-md-12">
-          <a href="/new-ad" id="new-ad-link" class="custom-link"><i class="fas fa-plus"></i> Post New Ad</a>
+          <a href="/post-new-ad" id="new-ad-link" class="custom-link"><i class="fas fa-plus"></i> Post New Ad</a>
         </div>
       </div>
     </div>
@@ -39,11 +39,23 @@
       </div>
       <div id="ads-container"></div>
     </div>
+
+    <script src="../javascripts/landing.js"></script>
+    <div class="notification-container position-fixed bottom-0 end-0 p-3 alert"
+         style="visibility: hidden"
+         id="notificationContainer">
+      <!-- Call showNotification function if message is true -->
+      <% if (message) { %>
+        <script>
+          showNotification();
+        </script>
+      <% } %>
+    </div>
+
   </div>
 </div>
 
 
-<script src="../javascripts/landing.js"></script>
 <!-- Bootstrap JS and Font Awesome Icons -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

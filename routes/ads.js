@@ -39,8 +39,12 @@ router.get('/approved', async (req, res) => {
 // Post a new ad
 router.post('/', async (req, res) => {
     try {
+        // Add new ad to the db
         const newAd = await Ad.create(req.body);
-        res.status(201).json(newAd);
+        // set message to true in order to show message in frontend
+        req.session.message = true;
+        // Redirect to the index page
+        res.status(201).redirect('/');
     } catch (error) {
         console.error(error);
         if (error.name === 'SequelizeValidationError') {

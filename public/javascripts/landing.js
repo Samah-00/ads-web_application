@@ -48,6 +48,21 @@ function createAdCard(ad) {
     return card;
 }
 
+// Function to show success notification
+function showNotification() {
+    const notification = document.createElement("div");
+    notification.textContent = "your ad was successfully posted and is waiting for approval";
+    notification.classList.add("notification");
+    const container = document.getElementById("notificationContainer");
+    container.appendChild(notification);
+    container.style.visibility = 'visible';
+    setTimeout(() => {
+        container.style.visibility = 'hidden';
+        container.removeChild(notification);
+    }, 4000);
+}
+
+// Fetch and display approved ads
 document.addEventListener("DOMContentLoaded", () => {
     fetchAndDisplayApprovedAds();
 });

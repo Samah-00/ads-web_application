@@ -8,8 +8,11 @@ const bodyParser = require('body-parser')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const adsRouter = require('./routes/ads');
+const session = require('express-session');
 
-const { sequelize } = require('./db'); // Import sequelize from db.js
+
+const { sequelize } = require('./db');
+const crypto = require("crypto"); // Import sequelize from db.js
 
 const app = express();
 
@@ -18,6 +21,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // ------- middlewares -------
+// generate a secretive key for the session
+const secret = crypto.randomBytes(64).toString('hex');
+// Use the session middleware
+app.use(session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: true
+}));
+
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({
         extended: true
