@@ -62,7 +62,24 @@ function showNotification() {
     }, 4000);
 }
 
-// Fetch and display approved ads
+// Function to set cookie for recent ad info
+function setCookie() {
+    // Get adId from query parameters
+    const adId = getQueryParam('adId');
+
+    // Check if adId is not null or undefined
+    if (adId) {
+    // Set adId as a cookie
+    document.cookie = `RecentAdId=${adId};`;
+    }
+}
+
+// Function to parse query parameters from URL
+function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     fetchAndDisplayApprovedAds();
 });

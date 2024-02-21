@@ -44,14 +44,14 @@
     <div class="notification-container position-fixed bottom-0 end-0 p-3 alert"
          style="visibility: hidden"
          id="notificationContainer">
-      <!-- Call showNotification function if message is true -->
+      <!-- Call showNotification function and set cookie if message is true -->
       <% if (message) { %>
         <script>
           showNotification();
+          setCookie();
         </script>
       <% } %>
     </div>
-
   </div>
 </div>
 

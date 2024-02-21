@@ -36,15 +36,32 @@ router.get('/approved', async (req, res) => {
     }
 });
 
+// Get an ad by ID
+router.get('/:id', async (req, res) => {
+    const adId = req.params.id;
+    try {
+        const ad = await Ad.findByPk(adId);
+        if (!ad) {
+            return res.status(404).json({ error: 'Ad not found' });
+        }
+        res.json(ad);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // Post a new ad
 router.post('/', async (req, res) => {
     try {
         // Add new ad to the db
         const newAd = await Ad.create(req.body);
-        // set message to true in order to show message in frontend
+        // set message to true in order to show success message in frontend
         req.session.message = true;
-        // Redirect to the index page
-        res.status(201).redirect('/');
+        // Set adId to the newly created ad's ID
+        const adId = newAd.id;
+        // Redirect to the index page with adId as a query parameter
+        res.status(201).redirect(`/?adId=${adId}`);
     } catch (error) {
         console.error(error);
         if (error.name === 'SequelizeValidationError') {
