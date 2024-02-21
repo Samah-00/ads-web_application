@@ -51,7 +51,7 @@ function createAdCard(ad) {
 // Function to show success notification
 function showNotification() {
     const notification = document.createElement("div");
-    notification.textContent = "your ad was successfully posted and is waiting for approval";
+    notification.textContent = "your ad was successfully posted and is waiting for approval 👍";
     notification.classList.add("notification");
     const container = document.getElementById("notificationContainer");
     container.appendChild(notification);
@@ -59,7 +59,7 @@ function showNotification() {
     setTimeout(() => {
         container.style.visibility = 'hidden';
         container.removeChild(notification);
-    }, 4000);
+    }, 5000);
 }
 
 // Function to set cookie for recent ad info

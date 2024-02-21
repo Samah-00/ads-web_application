@@ -9,12 +9,21 @@
           rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
           crossorigin="anonymous">
     <!-- Include your custom CSS if any -->
-<!--    <link rel="stylesheet" type="text/css" href="stylesheets/post-new-ad.css">-->
+    <link rel="stylesheet" type="text/css" href="stylesheets/post-new-ad.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<div class="container">
-    <h1>Post a New Ad</h1>
+<div class="container my-3">
+    <h1 style="font-weight: 700;font-family: 'Merriweather', serif;">Post a New Ad |
+        <!-- Link to redirect to the index page -->
+        <a href="/" class="btn btn-link mb-2">Return</a></h1>
+
     <div id="welcomeMessageContainer"></div>
+
     <!-- Form for posting an ad -->
     <form id="postAdForm" action="/ads" method="POST">
         <div class="form-group">
@@ -31,17 +40,14 @@
         </div>
         <div class="form-group">
             <label for="phoneNumber">Phone Number:</label>
-            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" pattern="(0[1-9]{1,2}-)?[1-9]\d{6,7}" placeholder="e.g., 02-1234567 or 055-1234567">
+            <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" pattern="(0[1-9]{1,2}-)?[1-9]\d{6,7}" placeholder="e.g. 02-1234567 or 055-1234567">
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary form-control my-4">Submit</button>
     </form>
-
-    <!-- Link to redirect to the index page -->
-    <a href="/" class="btn btn-link mt-3">Return</a>
 </div>
 
 <!-- Bootstrap JS -->
