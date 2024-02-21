@@ -19,20 +19,25 @@ async function fetchRecentAdInfo(adId) {
         const response = await fetch(`http://localhost:3000/ads/${adId}`);
         if (response.ok) {
             const adInfo = await response.json();
-            console.log("Ad Info:", adInfo);
-            const welcomeContainer = document.getElementById('welcomeMessageContainer');
-            if (adInfo.approved) {
-                const welcomeMessage = document.createElement("p");
-                welcomeMessage.textContent = `Welcome back ${adInfo.email}, your ad was successfully approved on ${adInfo.updatedAt}`;
-                welcomeContainer.appendChild(welcomeMessage);
-            } else {
-                const waitingMessage = document.createElement('p');
-                waitingMessage.textContent = `Welcome back ${adInfo.email}, your previous ad is waiting for approval`;
-                welcomeContainer.appendChild(waitingMessage);
-            }
+            return adInfo;
         }
     } catch (error) {
         console.error("Error:", error);
+        return null;
+    }
+}
+
+function buildWelcomeMessage(adInfo) {
+    const welcomeContainer = document.getElementById('welcomeMessageContainer');
+
+    if (adInfo.approved) {
+        const welcomeMessage = document.createElement("p");
+        welcomeMessage.textContent = `Welcome back ${adInfo.email}, your ad was successfully approved on ${adInfo.updatedAt}`;
+        welcomeContainer.appendChild(welcomeMessage);
+    } else {
+        const waitingMessage = document.createElement('p');
+        waitingMessage.textContent = `Welcome back ${adInfo.email}, your previous ad is waiting for approval`;
+        welcomeContainer.appendChild(waitingMessage);
     }
 }
 
@@ -41,6 +46,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const adId = getCookie("RecentAdId");
     // Check if adId exists
     if (adId) {
-        await fetchRecentAdInfo(adId);
+        const recentAdInfo = await fetchRecentAdInfo(adId);
+        if (recentAdInfo) {
+            buildWelcomeMessage(recentAdInfo);
+        }
     }
 });
