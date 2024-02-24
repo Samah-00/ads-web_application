@@ -14,4 +14,8 @@ router.get('/post-new-ad', (req, res) => {
   res.render('post-new-ad');
 });
 
+router.get('/users', (req, res) => {
+  res.render('admin-page');
+});
+
 module.exports = router;

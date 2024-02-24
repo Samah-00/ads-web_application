@@ -5,18 +5,17 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const bodyParser = require('body-parser')
+const session = require('express-session');
+const crypto = require("crypto");
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const adsRouter = require('./routes/ads');
-const session = require('express-session');
-
-
-const { sequelize } = require('./db');
-const crypto = require("crypto"); // Import sequelize from db.js
+const { sequelize } = require('./db');  // Import sequelize from db.js
 
 const app = express();
 
-// view engine setup
+// ------- view engine setup -------
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -63,7 +62,7 @@ app.use('/ads', adsRouter);
 // to make sure that we listen on an available port
 const port = process.env.PORT || 3000;
 app.listen(port, 'localhost', () => {
-    console.log(`Ready to receive requests to port ${port}.`);
+    console.log(`Ready to receive requests on port ${port}.`);
 });
 
 module.exports = app;

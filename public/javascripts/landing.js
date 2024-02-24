@@ -1,26 +1,3 @@
-function fetchAndDisplayApprovedAds() {
-    // Fetch approved ads and display them on the landing page
-    fetch('http://localhost:3000/ads/approved')
-        .then(response => response.json())
-        .then(ads => {
-            const adsContainer = document.getElementById('ads-container');
-            if (ads.length === 0) {
-                // Display a message if there are no ads
-                adsContainer.innerHTML = '' +
-                    '<div id="empty-ad-message-container">' +
-                    '<p>No ads available at the moment 💔</p>' +
-                    '</div>';
-            } else {
-                // Display ads if there are any
-                ads.forEach(ad => {
-                    const adCard = createAdCard(ad); // Create a card for each ad
-                    adsContainer.appendChild(adCard);
-                });
-            }
-        })
-        .catch(error => console.error('Error fetching ads:', error));
-}
-
 function createAdCard(ad) {
     const card = document.createElement('div');
     card.classList.add('card', 'mb-3');
@@ -81,5 +58,8 @@ function getQueryParam(name) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetchAndDisplayApprovedAds();
+    fetchAds('http://localhost:3000/ads/approved')
+        .then(approvedAds => {
+            displayAds(approvedAds);
+        });
 });

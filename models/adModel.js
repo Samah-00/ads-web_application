@@ -22,7 +22,12 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                is: /^\d{2,3}-\d{7}$/   // Validating format as XXX-XXXXXXX or XX-XXXXXXX where X is a digit
+                isPhoneNumber: function(value) {
+                    // Check if the value is present and matches the desired format
+                    if (value && !/^\d{2,3}-\d{7}$/.test(value)) {
+                        throw new Error('Invalid phone number format. It should be XXX-XXXXXXX or XX-XXXXXXX where X is a digit.');
+                    }
+                }
             }
         },
         email: {

@@ -1,0 +1,49 @@
+body {
+    background-image: url('../images/background2.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.card {
+    margin: 20px;
+}
+.card-title {
+    font-size: 1.5rem;
+}
+.card-description {
+    margin-top: 10px;
+}
+.card-footer {
+    background-color: #6495ED;
+}
+.icon {
+    margin-right: 5px;
+}
+#empty-ad-message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.custom-panel {
+    background-color: #6495ED;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.custom-link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+.custom-link:hover {
+    background-color: #f0f0f0;
+}
+
+.custom-link.active {
+    background-color: #f0f0f0;
+}
