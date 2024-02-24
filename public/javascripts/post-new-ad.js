@@ -32,9 +32,10 @@ function buildWelcomeMessage(adInfo) {
     const welcomeMessage = document.createElement("p");
     welcomeMessage.style.fontWeight = "700";
     welcomeMessage.style.fontFamily = "'Merriweather', serif";
+    const date =  adInfo.updatedAt.substring(0, 10);
 
     if (adInfo.approved) {
-        welcomeMessage.textContent = `Welcome back ${adInfo.email}, your ad was successfully approved on ${adInfo.updatedAt} 😊`;
+        welcomeMessage.textContent = `Welcome back ${adInfo.email}, your ad was successfully approved on ${date} 😊`;
     } else {
         welcomeMessage.textContent = `Welcome back ${adInfo.email}, your previous ad is waiting for approval 😊`;
     }

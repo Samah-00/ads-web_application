@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true,
             validate: {
-                is: /^[0-9]{2,3}-[0-9]{7}$/ // Validating format as XXX-XXXXXXX or XX-XXXXXXX
+                is: /^\d{2,3}-\d{7}$/   // Validating format as XXX-XXXXXXX or XX-XXXXXXX where X is a digit
             }
         },
         email: {
