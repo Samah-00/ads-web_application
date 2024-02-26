@@ -7,20 +7,6 @@ const { Ad } = require('../db'); // Import Ad model from db.js
 const router = express.Router();
 // ------- Ad routes -------
 
-// // Get all ads sorted by update time (newer ad first)
-// // TODO: check user login
-// router.get('/', async (req, res) => {
-//     try {
-//         const ads = await Ad.findAll({
-//             order: [['updatedAt', 'DESC']] // Sort by updatedAt timestamp in descending order
-//         });
-//         res.json(ads);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
-
 // Get approved ads sorted by update time (newer ad first)
 router.get('/approved', async (req, res) => {
     try {
@@ -32,23 +18,25 @@ router.get('/approved', async (req, res) => {
         });
         res.json(approvedAds);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).render('error-page',{ Title: 'Error', message: 'Internal Server Error 💔', code: 500});
     }
 });
 
-// Get an ad by ID
+// Get an ad by ID, route is used to check if an ad was updated (approved)
 router.get('/:id', async (req, res) => {
     const adId = req.params.id;
     try {
         const ad = await Ad.findByPk(adId);
         if (!ad) {
-            return res.status(404).json({ error: 'Ad not found' });
+            // If the ad is not found, send a 404 response
+            return res.status(404).json({ message: 'Ad not found' });
+            // res.status(404).render('error-page',{ Title: 'Error', message: 'Ad not found 👀', code: 404});
         }
+        // If the ad is found, send it in the response
         res.json(ad);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        // Handle server errors with a 500 response
+        res.status(500).json({ message: 'Internal Server Error' });
     }
 });
 
@@ -66,47 +54,12 @@ router.post('/', async (req, res) => {
     } catch (error) {
         console.error(error);
         if (error.name === 'SequelizeValidationError') {
-            res.status(400).json({ error: `Bad Request: ${error}` });
+            res.status(400).render('error-page',{ Title: 'Error', message: `Bad Request: ${error}`, code: 400});
         } else {
-            res.status(500).json({ error: 'Internal Server Error' });
+            res.status(500).render('error-page',{ Title: 'Error', message: 'Internal Server Error 💔', code: 500});
         }
     }
 });
-
-// // Update an ad (change approved to true)
-// // TODO: check user login
-// router.put('/:id', async (req, res) => {
-//     const adId = req.params.id;
-//     try {
-//         const ad = await Ad.findByPk(adId);
-//         if (!ad) {
-//             return res.status(404).json({ error: 'Ad not found' });
-//         }
-//         ad.approved = true;
-//         await ad.save();
-//         res.json(ad);
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
-//
-// // Delete an ad
-// // TODO: check user login
-// router.delete('/:id', async (req, res) => {
-//     const adId = req.params.id;
-//     try {
-//         const ad = await Ad.findByPk(adId);
-//         if (!ad) {
-//             return res.status(404).json({ error: 'Ad not found' });
-//         }
-//         await ad.destroy();
-//         res.status(204).send();
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
 
 // Middleware to check if the user is authenticated
 function requireLogin(req, res, next) {
@@ -125,8 +78,8 @@ router.get('/', requireLogin, async (req, res) => {
         });
         res.json(ads);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).render('error-page',{ Title: 'Error', message: 'Internal Server Error 💔', code: 500});
+
     }
 });
 
@@ -136,14 +89,14 @@ router.put('/:id', requireLogin, async (req, res) => {
     try {
         const ad = await Ad.findByPk(adId);
         if (!ad) {
-            return res.status(404).json({ error: 'Ad not found' });
+            res.status(404).render('error-page',{ Title: 'Error', message: 'Ad not found 👀', code: 404});
         }
         ad.approved = true;
         await ad.save();
         res.json(ad);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).render('error-page',{ Title: 'Error', message: 'Internal Server Error 💔', code: 500});
+
     }
 });
 
@@ -153,13 +106,12 @@ router.delete('/:id', requireLogin, async (req, res) => {
     try {
         const ad = await Ad.findByPk(adId);
         if (!ad) {
-            return res.status(404).json({ error: 'Ad not found' });
+            res.status(404).render('error-page',{ Title: 'Error', message: 'Ad not found 👀', code: 404});
         }
         await ad.destroy();
         res.status(204).send();
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).render('error-page',{ Title: 'Error', message: 'Internal Server Error 💔', code: 500});
     }
 });
 

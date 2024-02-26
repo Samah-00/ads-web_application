@@ -40,8 +40,8 @@ router.post('/logout', (req, res) => {
   // Destroy session
   req.session.destroy((err) => {
     if (err) {
-      console.log(err);
-      res.status(500).json({ message: 'Logout failed' });
+      // Handle failure case
+      res.render('error-page',{ Title: 'Error', message: 'failed to logout 😣', code: 500});
     } else {
       // Redirect to home page
       res.redirect('/');

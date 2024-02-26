@@ -42,20 +42,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/ads', adsRouter);
 
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//     next(createError(404));
-// });
-//
-// // error handler
-// app.use(function(err, req, res, next) {
-//     if (err.status === 404) {
-//         res.status(404);
-//         res.render('errorPage',{ Title: 'Error'});
-//     } else {
-//         next(err);
-//     }
-// });
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+    if (err.status === 404) {
+        res.status(404);
+        res.render('error-page',{ Title: 'Error', message: 'Page not found 👀', code: err.status});
+    } else {
+        next(err);
+    }
+});
 
 // to make sure that we listen on an available port
 const port = process.env.PORT || 3000;

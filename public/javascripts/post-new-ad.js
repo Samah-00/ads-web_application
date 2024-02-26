@@ -30,18 +30,20 @@ async function fetchRecentAdInfo(adId) {
 }
 
 function buildWelcomeMessage(adInfo) {
-    const welcomeContainer = document.getElementById('welcomeMessageContainer');
-    const welcomeMessage = document.createElement("p");
-    welcomeMessage.style.fontWeight = "700";
-    welcomeMessage.style.fontFamily = "'Merriweather', serif";
-    const date =  adInfo.updatedAt.substring(0, 10);
+    if (adInfo) {
+        const welcomeContainer = document.getElementById('welcomeMessageContainer');
+        const welcomeMessage = document.createElement("p");
+        welcomeMessage.style.fontWeight = "700";
+        welcomeMessage.style.fontFamily = "'Merriweather', serif";
+        const date =  adInfo.updatedAt.substring(0, 10);
 
-    if (adInfo.approved) {
-        welcomeMessage.textContent = `Welcome back ${adInfo.email}, your ad was successfully approved on ${date} 😊`;
-    } else {
-        welcomeMessage.textContent = `Welcome back ${adInfo.email}, your previous ad is waiting for approval 😊`;
+        if (adInfo.approved) {
+            welcomeMessage.textContent = `Welcome back ${adInfo.email}, your ad was successfully approved on ${date} 😊`;
+        } else {
+            welcomeMessage.textContent = `Welcome back ${adInfo.email}, your previous ad is waiting for approval 😊`;
+        }
+        welcomeContainer.appendChild(welcomeMessage);
     }
-    welcomeContainer.appendChild(welcomeMessage);
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

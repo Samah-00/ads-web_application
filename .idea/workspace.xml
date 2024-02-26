@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fea2e54-9b5d-4eab-aaf1-cf8c61f04630" name="Changes" comment="">
+    <list default="true" id="68f18517-7997-43ec-a99a-61736d2ff22f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/stylesheets/error-page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/error-page.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/path/to/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/path/to/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/admin-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/admin-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/fetchAds.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/fetchAds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/landing.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/javascripts/post-new-ad.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/post-new-ad.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/admin-page.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/admin-page.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/login-page.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login-page.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/post-new-ad.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/post-new-ad.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/ads.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/ads.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +29,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2cqifQtYDumrasCx5nyEiq3kcgp" />
+  <component name="ProjectId" id="2curm52gy24Fzwv93FlPhXkgExb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -42,7 +40,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Samah/WebstormProjects/mars-images-from-nasa",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
@@ -51,13 +48,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1fea2e54-9b5d-4eab-aaf1-cf8c61f04630" name="Changes" comment="" />
-      <created>1708845614636</created>
+      <changelist id="68f18517-7997-43ec-a99a-61736d2ff22f" name="Changes" comment="" />
+      <created>1708972461730</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1708845614636</updated>
-      <workItem from="1708845619784" duration="13459000" />
-      <workItem from="1708962124513" duration="7758000" />
+      <updated>1708972461730</updated>
+      <workItem from="1708972465724" duration="4384000" />
     </task>
     <servers />
   </component>
