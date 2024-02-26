@@ -98,4 +98,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             deleteAd(adId);
         });
     });
+
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+        await search(event);
+    });
 });

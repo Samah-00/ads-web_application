@@ -27,9 +27,9 @@
   <div class="row">
     <div class="col-md-3 custom-panel">
       <div class="col-12 pt-md-3">
-        <form action="/search" method="GET" class="search-form">
+        <form action="/search" method="GET" class="search-form" id="searchForm">
           <div class="input-group">
-            <input type="text" name="q" placeholder="Search Ads" class="form-control">
+            <input type="text" id="searchInput" name="search" placeholder="Search Ads" class="form-control">
           </div>
         </form>
       </div>
@@ -51,6 +51,7 @@
     </div>
 
     <script src="../javascripts/fetchAds.js"></script>
+    <script src="../javascripts/search.js"></script>
     <script src="../javascripts/landing.js"></script>
     <div class="notification-container position-fixed bottom-0 end-0 p-3 alert"
          style="visibility: hidden"

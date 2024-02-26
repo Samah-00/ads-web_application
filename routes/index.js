@@ -1,5 +1,6 @@
 const express = require('express');
-const {User} = require("../db");
+const {User, Ad} = require("../db");
+const {Sequelize} = require("sequelize");
 const router = express.Router();
 
 /* GET home page. */

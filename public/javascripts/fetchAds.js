@@ -14,15 +14,16 @@ function fetchAds(url) {
         });
 }
 
-function displayAds(ads) {
+function displayAds(ads, emptyMessage = 'No ads available at the moment 💔') {
     const adsContainer = document.getElementById('ads-container');
     if (ads.length === 0) {
         // Display a message if there are no ads
         adsContainer.innerHTML = '' +
             '<div id="empty-ad-message-container">' +
-            '<p>No ads available at the moment 💔</p>' +
+            '<p>' + emptyMessage + '</p>' + // Insert the emptyMessage
             '</div>';
     } else {
+        adsContainer.innerHTML = '';
         // Display ads if there are any
         ads.forEach(ad => {
             const adCard = createAdCard(ad); // Create a card for each ad

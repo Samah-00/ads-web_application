@@ -7,6 +7,29 @@ const { Ad } = require('../db'); // Import Ad model from db.js
 const router = express.Router();
 // ------- Ad routes -------
 
+// Search ads by title containing a string
+router.get('/search', async (req, res) => {
+    const searchString = req.query.search; // Get the search string from query parameter 'search'
+    try {
+        if (!searchString) {
+            return res.status(400).json({ error: 'Search string is required' });
+        }
+        const ads = await Ad.findAll({
+            where: {
+                title: {
+                    [Sequelize.Op.like]: `%${searchString}%`
+                },
+                approved: true
+            },
+            order: [['updatedAt', 'DESC']]
+        });
+        res.json(ads);
+    } catch (error) {
+        res.status(500).render('error-page',
+            { Title: 'Error', message: 'Internal Server Error 💔', code: 500});
+    }
+});
+
 // Get approved ads sorted by update time (newer ad first)
 router.get('/approved', async (req, res) => {
     try {

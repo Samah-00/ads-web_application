@@ -64,4 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loader.style.visibility = 'hidden';
             displayAds(approvedAds);
         });
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+       await search(event);
+    });
 });
