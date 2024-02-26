@@ -58,8 +58,10 @@ function getQueryParam(name) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    loader.style.visibility = 'visible'; //show the loader gif until fetch in done
     fetchAds('http://localhost:3000/ads/approved')
         .then(approvedAds => {
+            loader.style.visibility = 'hidden';
             displayAds(approvedAds);
         });
 });

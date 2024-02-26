@@ -40,11 +40,13 @@ function createAdCard(ad) {
 }
 
 function approveAd(adId) {
+    loader.style.visibility = 'visible'; //show the loader gif until fetch in done
     // Send a PUT request to approve the ad
     fetch(`http://localhost:3000/ads/${adId}`, {
         method: 'PUT',
     })
         .then(response => {
+            loader.style.visibility = 'hidden';
             if (response.ok) {
                 // If the request was successful, reload the page to reflect the changes
                 window.location.reload();
@@ -59,10 +61,12 @@ function approveAd(adId) {
 
 function deleteAd(adId) {
     // Send a DELETE request to delete the ad
+    loader.style.visibility = 'visible'; //show the loader gif until fetch in done
     fetch(`http://localhost:3000/ads/${adId}`, {
         method: 'DELETE',
     })
         .then(response => {
+            loader.style.visibility = 'hidden';
             if (response.ok) {
                 // If the request was successful, reload the page to reflect the changes
                 window.location.reload();

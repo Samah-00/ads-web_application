@@ -15,8 +15,10 @@ function getCookie(name) {
 
 async function fetchRecentAdInfo(adId) {
     try {
+        loader.style.visibility = 'visible'; //show the loader gif until fetch in done
         // Send GET request to retrieve ad's info
         const response = await fetch(`http://localhost:3000/ads/${adId}`);
+        loader.style.visibility = 'hidden';
         if (response.ok) {
             const adInfo = await response.json();
             return adInfo;

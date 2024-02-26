@@ -1,7 +1,11 @@
+const loader = document.getElementById('loader');
+
 function fetchAds(url) {
+    loader.style.visibility = 'visible'; //show the loader gif until fetch in done
     return fetch(url)
         .then(response => response.json())
         .then(ads => {
+            loader.style.visibility = 'hidden';
             return ads;
         })
         .catch(error => {
