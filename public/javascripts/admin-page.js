@@ -75,7 +75,6 @@ function deleteAd(adId) {
         });
 }
 
-
 document.addEventListener("DOMContentLoaded", async () => {
     const ads = await fetchAds('http://localhost:3000/ads');
 

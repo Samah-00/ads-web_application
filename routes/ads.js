@@ -7,18 +7,19 @@ const { Ad } = require('../db'); // Import Ad model from db.js
 const router = express.Router();
 // ------- Ad routes -------
 
-// Get all ads sorted by update time (newer ad first)
-router.get('/', async (req, res) => {
-    try {
-        const ads = await Ad.findAll({
-            order: [['updatedAt', 'DESC']] // Sort by updatedAt timestamp in descending order
-        });
-        res.json(ads);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+// // Get all ads sorted by update time (newer ad first)
+// // TODO: check user login
+// router.get('/', async (req, res) => {
+//     try {
+//         const ads = await Ad.findAll({
+//             order: [['updatedAt', 'DESC']] // Sort by updatedAt timestamp in descending order
+//         });
+//         res.json(ads);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
 
 // Get approved ads sorted by update time (newer ad first)
 router.get('/approved', async (req, res) => {
@@ -72,8 +73,65 @@ router.post('/', async (req, res) => {
     }
 });
 
+// // Update an ad (change approved to true)
+// // TODO: check user login
+// router.put('/:id', async (req, res) => {
+//     const adId = req.params.id;
+//     try {
+//         const ad = await Ad.findByPk(adId);
+//         if (!ad) {
+//             return res.status(404).json({ error: 'Ad not found' });
+//         }
+//         ad.approved = true;
+//         await ad.save();
+//         res.json(ad);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+//
+// // Delete an ad
+// // TODO: check user login
+// router.delete('/:id', async (req, res) => {
+//     const adId = req.params.id;
+//     try {
+//         const ad = await Ad.findByPk(adId);
+//         if (!ad) {
+//             return res.status(404).json({ error: 'Ad not found' });
+//         }
+//         await ad.destroy();
+//         res.status(204).send();
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+
+// Middleware to check if the user is authenticated
+function requireLogin(req, res, next) {
+    if (req.session && req.session.user) {
+        return next();
+    } else {
+        return res.redirect('/login');
+    }
+}
+
+// Get all ads sorted by update time (newer ad first)
+router.get('/', requireLogin, async (req, res) => {
+    try {
+        const ads = await Ad.findAll({
+            order: [['updatedAt', 'DESC']] // Sort by updatedAt timestamp in descending order
+        });
+        res.json(ads);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 // Update an ad (change approved to true)
-router.put('/:id', async (req, res) => {
+router.put('/:id', requireLogin, async (req, res) => {
     const adId = req.params.id;
     try {
         const ad = await Ad.findByPk(adId);
@@ -90,7 +148,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete an ad
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', requireLogin, async (req, res) => {
     const adId = req.params.id;
     try {
         const ad = await Ad.findByPk(adId);

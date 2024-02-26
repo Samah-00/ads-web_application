@@ -1,4 +1,5 @@
 const express = require('express');
+const {User} = require("../db");
 const router = express.Router();
 
 /* GET home page. */
@@ -14,7 +15,50 @@ router.get('/post-new-ad', (req, res) => {
   res.render('post-new-ad');
 });
 
-router.get('/users', (req, res) => {
+// Login page
+router.get('/login', (req, res) => {
+  const message = req.session.message || false;
+  req.session.message = false;
+  res.render('login-page', { message });
+});
+
+// Login
+router.post('/login', async (req, res) => {
+  const { login, password } = req.body;
+  const user = await User.findOne({ where: { login, password } });
+  if (user) {
+    req.session.user = user;
+    res.render('admin-page')
+  } else {
+    req.session.message=true;
+    res.status(401).redirect('/login');
+  }
+});
+
+// Logout
+router.post('/logout', (req, res) => {
+  // Destroy session
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+      res.status(500).json({ message: 'Logout failed' });
+    } else {
+      // Redirect to home page
+      res.redirect('/');
+    }
+  });
+});
+
+// Middleware to check if the user is authenticated
+function requireLogin(req, res, next) {
+  if (req.session && req.session.user) {
+    return next();
+  } else {
+    return res.redirect('/login');
+  }
+}
+
+router.get('/admin-page', requireLogin, (req, res) => {
   res.render('admin-page');
 });
 
