@@ -65,6 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
             displayAds(approvedAds);
         });
     document.getElementById('searchForm').addEventListener('submit', async (event) => {
-       await search(event);
+       await searchAds(event);
     });
 });

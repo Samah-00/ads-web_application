@@ -9,7 +9,7 @@ const router = express.Router();
 
 // Search ads by title containing a string
 router.get('/search', async (req, res) => {
-    const searchString = req.query.search; // Get the search string from query parameter 'search'
+    const searchString = req.query.search; // Get the searchAds string from query parameter 'searchAds'
     try {
         if (!searchString) {
             return res.status(400).json({ error: 'Search string is required' });
@@ -89,7 +89,7 @@ function requireLogin(req, res, next) {
     if (req.session && req.session.user) {
         return next();
     } else {
-        return res.redirect('/login');
+        return res.status(401).redirect('/login');  // Unauthorized
     }
 }
 

@@ -9,6 +9,7 @@ function fetchAds(url) {
             return ads;
         })
         .catch(error => {
+            loader.style.visibility = 'hidden';
             console.error('Error fetching ads:', error);
             return []; // Return an empty array in case of an error
         });

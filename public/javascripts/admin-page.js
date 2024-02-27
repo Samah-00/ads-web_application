@@ -55,6 +55,7 @@ function approveAd(adId) {
             }
         })
         .catch(error => {
+            loader.style.visibility = 'hidden';
             console.error('Error approving ad:', error);
         });
 }
@@ -75,6 +76,7 @@ function deleteAd(adId) {
             }
         })
         .catch(error => {
+            loader.style.visibility = 'hidden';
             console.error('Error deleting ad:', error);
         });
 }
@@ -100,6 +102,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.getElementById('searchForm').addEventListener('submit', async (event) => {
-        await search(event);
+        await searchAds(event);
     });
 });
