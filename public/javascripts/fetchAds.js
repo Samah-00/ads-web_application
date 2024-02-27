@@ -3,9 +3,14 @@ const loader = document.getElementById('loader');
 function fetchAds(url) {
     loader.style.visibility = 'visible'; //show the loader gif until fetch in done
     return fetch(url)
-        .then(response => response.json())
-        .then(ads => {
+        .then(response => {
             loader.style.visibility = 'hidden';
+            if (response.status === 401) {
+                window.location.href = '/login?unauthorized=true'; // Redirect to login page with unauthorized message
+            }
+            return response.json();
+        })
+        .then(ads => {
             return ads;
         })
         .catch(error => {

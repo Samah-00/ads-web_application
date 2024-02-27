@@ -29,7 +29,7 @@
     <h1 style="font-weight: 700;font-family: 'Merriweather', serif;">Login 🚦</h1>
 
     <% if (message) { %>
-        <p class="error-message" style="font-weight: 700;font-family: 'Merriweather', serif;">Invalid login credentials</p>
+        <p class="error-message" style="font-weight: 700;font-family: 'Merriweather', serif;"><%= message %></p>
     <% } %>
 
     <form action="/login" method="post" class="form">

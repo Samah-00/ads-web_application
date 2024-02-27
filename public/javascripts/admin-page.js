@@ -50,6 +50,8 @@ function approveAd(adId) {
             if (response.ok) {
                 // If the request was successful, reload the page to reflect the changes
                 window.location.reload();
+            } else if (response.status === 401) {
+                window.location.href = '/login'; // Redirect to login page if unauthorized
             } else {
                 console.error('Failed to approve ad:', response.statusText);
             }
@@ -71,6 +73,8 @@ function deleteAd(adId) {
             if (response.ok) {
                 // If the request was successful, reload the page to reflect the changes
                 window.location.reload();
+            } else if (response.status === 401) {
+                window.location.href = '/login'; // Redirect to login page if unauthorized
             } else {
                 console.error('Failed to delete ad:', response.statusText);
             }

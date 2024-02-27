@@ -17,7 +17,11 @@ router.get('/post-new-ad', (req, res) => {
 
 // Login page
 router.get('/login', (req, res) => {
-  const message = req.session.message || false;
+  let message = '';
+  if(req.query.unauthorized)
+    message = 'You are unauthorized. Please log in.';
+  else if(req.session.message)
+    message = 'Invalid login credentials';
   req.session.message = false;
   res.render('login-page', { message });
 });
