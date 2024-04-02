@@ -4,9 +4,6 @@
     <list default="true" id="68f18517-7997-43ec-a99a-61736d2ff22f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/path/to/database.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/path/to/database.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/admin-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/admin-page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/fetchAds.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/fetchAds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/javascripts/landing.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/javascripts/landing.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +35,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Samah/.gitconfig&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Samah/WebstormProjects/app&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -66,7 +63,8 @@
       <workItem from="1709030142809" duration="10656000" />
       <workItem from="1709042210370" duration="127000" />
       <workItem from="1709056155842" duration="712000" />
-      <workItem from="1709061984350" duration="2293000" />
+      <workItem from="1709061984350" duration="3281000" />
+      <workItem from="1709288661171" duration="660000" />
     </task>
     <servers />
   </component>
